@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Masukkan data pendonor {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="title">Nama</label>
+        <input type="text" name="title"
+               placeholder="Maulana Alucrad" class="form-control"
+               value="{{ request.form['title'] }}"></input>
+    </div>
+
+    <div class="form-group">
+        <strong>Golongan Darah</strong></label></td><td><select class="box" name="content" id="content">
+            <option value="A"> A </option>
+            <option value="B"> B </option>
+            <option value="AB"> AB </option>
+            <option value="O"> O </option>
+          </select></td></tr>
+                {{ request.form['content'] }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="No_hp">Nomor hp</label>
+        <textarea name="No_hp" placeholder="08218963872"
+                  class="form-control">{{ request.form['No_hp'] }}</textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}
+

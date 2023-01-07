@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Cari Golongan Darah {% endblock %}</h1>
+
+    <h2>{{ post['sql'] }}</h2>
+    
+    <form method="GET" action="search">
+        <strong>Golongan Darah</strong></label></td><td><select class="box" name="q" id="q">
+            <option value="A"> A </option>
+            <option value="B"> B </option>
+            <option value="AB"> AB </option>
+            <option value="O"> O </option>
+          </select></td></tr>
+        <button type="submit">Search</button>
+
+
+    {% if  post['title'] == null and q == null %}
+        <h5>Semoga hari anda menyenangkan</h5>
+    {% else%}
+        <h2 style="background-color:DodgerBlue;">Golongan darah tersedia</h2>
+        <p>Pemilik atas nama {{ post['title'] }}<p>
+    {% endif %}
+{% endblock %}

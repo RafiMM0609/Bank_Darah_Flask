@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+<title>HOMERAPAL</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <h3>Bank Darah RAPAL</h3>
+</header>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+        <li
+            <a class="nav-link" href="{{ url_for('index')}}">Home</a>
+        <li class="nav-item active">
+            <a class="nav-link" href="{{url_for('posts_lists')}}">Search</a>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('create')}}">Input</a>
+        </li>    
+        </li>
+        </li>
+        </ul>
+    </div>
+</nav>
+<section>
+  <article>
+    {% block content %}
+    {% for post in posts %}
+    <a href="#">
+        <h2>{{ post['title'] }}</h2>
+        <h3>{{ post['content'] }}</h3>
+        <h3>{{ post['No_hp'] }}</h3>
+    </a>
+    <span class="badge badge-primary">{{ post['created'] }}</span>
+    <hr>
+    {% endfor %}    
+  </article>
+</section>
+{% endblock %}
+</body>
+</html>
+
